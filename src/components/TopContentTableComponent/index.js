@@ -27,7 +27,6 @@ export class TopContentTableComponent extends React.Component {
     if (this.state.topContent === '') {
       return (<div>Loading...</div>);
     }
-console.log(this.state.topContent);
     let i = 1;
     return (
       <div>
