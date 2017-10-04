@@ -2,6 +2,14 @@ import React from 'react';
 
 import styles from '../../PageComponent/styles.scss';
 
+const user = {
+    trainer: 'Christopher Cox',
+    rank: 1,
+    progress: 70,
+    percent: 70,
+    memberId: 123
+  };
+
 export class IndividualReportComponent extends React.Component {
 
   constructor(props) {
@@ -11,7 +19,7 @@ export class IndividualReportComponent extends React.Component {
   render() {
     return (
       <div>
-        <h1>{`${this.props.user} Training`}</h1>
+        <h1>{`${user.trainer} Training`}</h1>
         <div className={`row ${styles.dateSelection}`}>
           <div className="col-md-6">
             <select className="form-control">
@@ -23,6 +31,21 @@ export class IndividualReportComponent extends React.Component {
         </div>
         <div>
           
+          <div className="row">
+            <div className="col">
+              <h2>Week Over Week</h2>
+              <div className={styles.chartcontent}>
+                  TBD
+              </div>
+            </div>
+            <div className="col">
+              <h2>TBD</h2>
+              <div className={styles.chartcontent}>
+                  TBD
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     );

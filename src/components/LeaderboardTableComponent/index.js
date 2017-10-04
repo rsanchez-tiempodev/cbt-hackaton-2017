@@ -5,7 +5,7 @@ import styles from '../../PageComponent/styles.scss';
 
 const users = [
   {
-    trainer: 'Cristopher Cox',
+    trainer: 'Christopher Cox',
     rank: 1,
     progress: 70,
     percent: 70,
