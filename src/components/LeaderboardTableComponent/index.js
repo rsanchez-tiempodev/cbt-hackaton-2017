@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import styles from '../../PageComponent/styles.scss';
 
@@ -33,7 +33,7 @@ export class LeaderboardTableComponent extends React.Component {
     super(props);
   }
 
-  render() {    
+  render() {
     return (
       <div>
         <table className={`table ${styles.leaderboard}`}>
@@ -46,13 +46,17 @@ export class LeaderboardTableComponent extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {users.map(row => {              
+            {users.map(row => {
               return (
                 <tr key={row.memberId}>
-                  <td key={row.rank}>{row.rank}</td>
-                  <td key={row.trainer}>{row.trainer}</td>
-                  <td key={row.progress}>{row.progress}</td>
-                  <td key={row.percent}>{row.percent}</td>
+                  <td>{row.rank}</td>
+                  <td><Link
+                    to={`/individual/${row.memberId}`}
+                  >
+                    {row.trainer}
+                  </Link></td>
+                  <td>{row.progress}</td>
+                  <td>{row.percent}</td>
                 </tr>
               )
             })}
