@@ -16,7 +16,7 @@ export class TopContentTableComponent extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://contentrecommend-pcztrnkukn.now.sh/content')
+    axios.get('https://contentrecommend-jlkxzlqfgc.now.sh/content')
       .then((response) => {
         this.setState({ topContent: response.data });
       });
@@ -35,7 +35,8 @@ export class TopContentTableComponent extends React.Component {
             <tr>
               <th width="15%">Rank</th>
               <th width="50%">Content</th>
-              <th width="25%">Author</th>
+              <th width="15%">Author</th>
+              <th width="10%">Categories</th>
               <th width="10%">Vote</th>
             </tr>
           </thead>
@@ -45,6 +46,7 @@ export class TopContentTableComponent extends React.Component {
                 <tr key={row._id}>
                   <td>{i++}. <span className={styles.votes}>{row.upVotes} votes</span></td>
                   <td><Linkify>{row.text}</Linkify></td>
+                  <td>{row.created_by}</td>
                   <td>{row.created_by}</td>
                   <td><a href="#">Upvote</a></td>
                 </tr>
