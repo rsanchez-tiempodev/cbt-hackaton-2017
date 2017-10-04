@@ -3,13 +3,37 @@ import { withRouter } from 'react-router-dom';
 
 import styles from '../../PageComponent/styles.scss';
 
+const users = [
+  {
+    trainer: 'Cristopher Cox',
+    rank: 1,
+    progress: 70,
+    percent: 70,
+    memberId: 123
+  },
+  {
+    trainer: 'Jason',
+    rank: 2,
+    progress: 70,
+    percent: 70,
+    memberId: 124
+  },
+  {
+    trainer: 'Nathan',
+    rank: 3,
+    progress: 70,
+    percent: 70,
+    memberId: 125
+  },
+];
+
 export class LeaderboardTableComponent extends React.Component {
 
   constructor(props) {
     super(props);
   }
 
-  render() {
+  render() {    
     return (
       <div>
         <table className={`table ${styles.leaderboard}`}>
@@ -22,8 +46,15 @@ export class LeaderboardTableComponent extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.data.map(row => {
-              <TableRow row={row} />
+            {users.map(row => {              
+              return (
+                <tr key={row.memberId}>
+                  <td key={row.rank}>{row.rank}</td>
+                  <td key={row.trainer}>{row.trainer}</td>
+                  <td key={row.progress}>{row.progress}</td>
+                  <td key={row.percent}>{row.percent}</td>
+                </tr>
+              )
             })}
           </tbody>
         </table>
@@ -31,14 +62,5 @@ export class LeaderboardTableComponent extends React.Component {
     );
   }
 }
-
-const TableRow = ({ row }) => (
-  <tr>
-    <td key={row.name}>{row.name}</td>
-    <td key={row.name}>{row.trainer}</td>
-    <td key={row.id}>{row.progress}</td>
-    <td key={row.price}>{row.percent}</td>
-  </tr>
-)
 
 export default LeaderboardTableComponent;
