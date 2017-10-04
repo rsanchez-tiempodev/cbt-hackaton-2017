@@ -1,10 +1,9 @@
 import axios from 'axios';
 import React from 'react';
-import Linkify from 'react-linkify';
+import TopContentTableRowComponent from '../TopContentTableRowComponent';
 import { Link, withRouter } from 'react-router-dom';
 
 import styles from '../../PageComponent/styles.scss';
-
 
 export class TopContentTableComponent extends React.Component {
 
@@ -16,7 +15,7 @@ export class TopContentTableComponent extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://contentrecommend-jlkxzlqfgc.now.sh/content')
+    axios.get('https://contentrecommend-msowfydjsb.now.sh/content')
       .then((response) => {
         this.setState({ topContent: response.data });
       });
@@ -37,21 +36,10 @@ export class TopContentTableComponent extends React.Component {
               <th width="50%">Content</th>
               <th width="15%">Author</th>
               <th width="10%">Categories</th>
-              <th width="10%">Vote</th>
             </tr>
           </thead>
-          <tbody>
-            {this.state.topContent.map(row => {              
-              return (
-                <tr key={row._id}>
-                  <td>{i++}. <span className={styles.votes}>{row.upVotes} votes</span></td>
-                  <td><Linkify>{row.text}</Linkify></td>
-                  <td>{row.created_by}</td>
-                  <td>{row.created_by}</td>
-                  <td><a href="#">Upvote</a></td>
-                </tr>
-              )
-            })}
+          <tbody>            
+            {this.state.topContent.map(row => <TopContentTableRowComponent index={i++} rowData={row} /> )}
           </tbody>
         </table>
       </div>
